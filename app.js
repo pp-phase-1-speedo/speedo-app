@@ -5,7 +5,10 @@ app.set('view engine' , 'ejs');
 app.use(express.urlencoded({extended : true}))
 const router = require('./routes/index'); 
 
-app.use('/', router)
+app.get('/', (req, res) => {
+    res.send('cek routing')
+})
+app.use('/testing', router)
 
 
 app.listen(port, () => {
