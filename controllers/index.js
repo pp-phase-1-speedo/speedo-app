@@ -1,8 +1,8 @@
 ///testing controller
 
 class Controller {
-    static testing (req, res) {
-        res.send(req.body)
+    static profilUser (req, res) {
+        res.render('halamanUser')
     }
     static add (req, res) {
         res.send(req.body)

@@ -6,7 +6,7 @@ app.use(express.urlencoded({extended : true}))
 const router = require('./routes/index'); 
 
 app.get('/', (req, res) => {
-    res.send('cek routing')
+    res.render('login')
 })
 app.use('/testing', router)
 
