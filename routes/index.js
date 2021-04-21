@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Controller = require('../controllers/index');
 
-router.get('/', Controller.testing)
+router.get('/', Controller.profilUser)
 router.get('/add', Controller.add)
 router.post('/add', Controller.addHandler)
 router.get('/:id/edit', Controller.edit)
