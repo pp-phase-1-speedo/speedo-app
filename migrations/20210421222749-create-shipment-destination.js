@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ShipmentCities', {
+    return queryInterface.createTable('ShipmentDestinations', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,25 +9,27 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       ShipmentId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Shipments',
-          key: "id",
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+        type: Sequelize.INTEGER
       },
-      CityId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Cities',
-          key: "id",
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+      DestinationId: {
+        type: Sequelize.INTEGER
       },
       status: {
         type: Sequelize.STRING
+      },
+      ShipmentId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: Shipment,
+          key: 'id'
+        }
+      },
+      DestinationId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: Destination,
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +42,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ShipmentCities');
+    return queryInterface.dropTable('ShipmentDestinations');
   }
 };

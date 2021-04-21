@@ -20,34 +20,28 @@ module.exports = {
       last_name: {
         type: Sequelize.STRING
       },
-      gender: {
+      email: {
         type: Sequelize.STRING
       },
-      email: {
+      gender: {
         type: Sequelize.STRING
       },
       phone_number: {
         type: Sequelize.STRING
       },
-      CityId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Cities',
-          key: "id",
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+      address: {
+        type: Sequelize.STRING
       },
       createdAt: {
-      allowNull: false,
-      type: Sequelize.DATE
-    },
+        allowNull: false,
+        type: Sequelize.DATE
+      },
       updatedAt: {
-      allowNull: false,
-      type: Sequelize.DATE
-    }
+        allowNull: false,
+        type: Sequelize.DATE
+      }
     });
-},
+  },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Users');
   }

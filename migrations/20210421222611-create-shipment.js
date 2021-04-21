@@ -8,14 +8,24 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      current_latitude: {
+        type: Sequelize.STRING
+      },
+      current_longitude: {
+        type: Sequelize.STRING
+      },
+      distance: {
+        type: Sequelize.INTEGER
+      },
+      price: {
+        type: Sequelize.INTEGER
+      },
       UserId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users',
-          key: "id",
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+          model: User,
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
