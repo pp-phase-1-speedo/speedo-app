@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // User.hasMany(models.shipment, { foreignKey: 'UserId' })
-      // User.hasOne(models.city, { foreignKey: 'CityId' })
+      User.hasMany(models.shipment)
+      User.hasOne(models.city, { foreignKey: 'CityId' })
     }
   };
   User.init({
@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
     email: DataTypes.STRING,
     phone_number: DataTypes.STRING,
-    // current_city: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',

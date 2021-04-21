@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // Shipment.belongsTo(models.User, { foreignKey: 'UserId' })
+      Shipment.belongsTo(models.User, { foreignKey: 'UserId' })
+      Shipment.belongsToMany(models.City, { through: models.ShipmentCity })
     }
   };
   Shipment.init({
-    UserId: DataTypes.INTEGER,
     // destination_city: DataTypes.STRING
   }, {
     sequelize,

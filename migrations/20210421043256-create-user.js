@@ -29,19 +29,25 @@ module.exports = {
       phone_number: {
         type: Sequelize.STRING
       },
-      // current_city: {
-      //   type: Sequelize.STRING
-      // },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      CityId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Cities',
+          key: "id",
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
+      createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE
+    },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+      allowNull: false,
+      type: Sequelize.DATE
+    }
     });
-  },
+},
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Users');
   }
