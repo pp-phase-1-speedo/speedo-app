@@ -1,0 +1,34 @@
+<%- include('./partials/head', {title: 'Add Destination' }) %>
+
+<form action="/destinations/<%= shipment_id %>/add" method="POST">
+  <input type="radio" id="" name="radio" checked value="existing">
+  <label>Use existing destination</label><br>
+  
+  <select name="destination_id">
+    <option>-- select destination ---</option>
+
+    <% destinations.forEach(destination => { %>
+        <% let {id, recipient_name} = destination %>
+        <option value="<%= id %>"><%= recipient_name %></option>
+
+    <% }) %>
+
+  </select><br><br>
+  
+  <input type="radio" id="" name="radio" value="new">
+  <label>Use new destination</label><br>
+
+  <label for="name">Recipient Name</label><br>
+  <input type="text" id="name" name="name" placeholder="John Smith"><br>
+
+  <label for="coordinate">Coordinate</label><br>
+  <input type="text" id="coordinate" name="coordinate" placeholder="[latitude], [longitude]"><br>
+
+  <br>
+  <input type="submit" value="Add destination">
+
+</form>
+
+<!-- <button type="button" class="btn btn-outline-dark">Back</button> -->
+
+<%- include('./partials/foot') %>

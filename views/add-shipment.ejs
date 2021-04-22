@@ -1,0 +1,20 @@
+<%- include('./partials/head', {title: 'Add Shipment' }) %>
+
+<form action="/shipments/<%= user_id %>/add" method="POST">
+
+  <label for="location">Select branch office:</label><br>
+  <select id="location" name="location">
+    <option value="-6.176583196881574, 106.8306848835742, Gambir, Jakarta Pusat">Cabang Gambir, Jakarta Pusat</option>
+    <option value="-6.899923454407073, 107.61941800046168, Gasibu, Bandung">Cabang Gasibu, Bandung</option>
+    <option value="3.5747357751521562, 98.68805827064362, Masjid Raya, Medan">Cabang Masjid Raya, Medan</option>
+    <option value="-7.283037100911854, 112.79794010017899, ITS, Surabaya">Cabang ITS, Surabaya</option>
+  </select><br>
+
+  <br>
+  <input type="submit" value="Add new shipment">
+
+</form>
+
+<!-- <button type="button" class="btn btn-outline-dark">Back</button> -->
+
+<%- include('./partials/foot') %>

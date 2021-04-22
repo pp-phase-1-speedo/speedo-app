@@ -1,0 +1,48 @@
+<%- include('./partials/head', {title: 'List Destination' }) %>
+
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>Destination ID</th>
+        <th>Recipient Name</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Distance</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% destinations.forEach(destination=> { %>
+        <% let {id, recipient_name, destination_latitude, destination_longitude, price, distance}=destination %>
+
+          <tr>
+            <td>
+              <%= id %>
+            </td>
+            <td>
+              <%= recipient_name %>
+            </td>
+            <td>
+              <%= destination_latitude %>
+            </td>
+            <td>
+              <%= destination_longitude %>
+            </td>
+            <td>
+              <%= distance + ' km' %>
+            </td>
+            <td>
+              <%= moneyFormatter(price) %>
+            </td>
+          </tr>
+
+          <% }) %>
+
+    </tbody>
+  </table>
+
+  <!-- <button type="button" class="btn btn-outline-dark">Back</button> -->
+
+
+  <%- include('./partials/foot') %>
