@@ -8,7 +8,11 @@ const {
 
 class Controller {
   static profilUser(req, res) {
-    User.findAll()
+    User.findAll({
+      where: {
+        username: req.query.username,
+      },
+    })
       .then((data) => {
         res.render("halamanUser", { data });
       })
@@ -34,7 +38,8 @@ class Controller {
     };
     User.create(dataRegister)
       .then((data) => {
-        res.send("berhasil");
+        // res.send("berhasil");
+        res.redirect('/login')
       })
       .catch((err) => {
         res.send(err);
@@ -51,6 +56,10 @@ class Controller {
   }
   static editHandler(req, res) {
     console.log(req.body);
+  }
+
+  static delete(req,res) {
+    
   }
 }
 
