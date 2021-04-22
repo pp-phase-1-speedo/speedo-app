@@ -25,8 +25,8 @@ class Controller {
   static getAdd(req, res) {
     Destination.findAll({ order: [['recipient_name', 'ASC']] })
       .then(destinations => {
-        res.send(destinations)
-        // res.render('./add-destination', { shipment_id: req.params.shipment_id })
+        // res.send(destinations)
+        res.render('./add-destination', { shipment_id: req.params.shipment_id })
       })
       .catch(err => {
         res.send(err)
