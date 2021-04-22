@@ -18,8 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   Shipment.init({
     current_latitude: DataTypes.STRING,
     current_longitude: DataTypes.STRING,
-    // distance: DataTypes.INTEGER,
-    // price: DataTypes.INTEGER
+    
   }, {
     sequelize,
     modelName: 'Shipment',

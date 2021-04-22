@@ -14,12 +14,6 @@ module.exports = {
       current_longitude: {
         type: Sequelize.STRING,
       },
-      distance: {
-        type: Sequelize.INTEGER,
-      },
-      price: {
-        type: Sequelize.INTEGER,
-      },
       UserId: {
         type: Sequelize.INTEGER,
         references: {
