@@ -8,39 +8,35 @@
 </head>
 <body>
     <nav>
-        <a href="/testing">Show Profile</a>
-        <a href="/testing/add">add Shipment</a>
+        <a href="/users">Show Profile</a>
+        <a href="/shipments/add">add Shipment</a>
     </nav>
 
     <table border="1">
-        <tr>
-            <td>Username: </td>
-            <td>Vroze</td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td>blabalbal</td>
-        </tr>
-        <tr>
-            <td>Name :</td>
-            <td>first name gabung sama last name</td>
-        </tr>
-        <tr>
-            <td>Gender :</td>
-            <td>ntar di form sign up kalau sempat kebikin pake radio button</td>
-        </tr>
-        <tr>
-            <td>Email :</td>
-            <td>yah email aja wkwkkw</td>
-        </tr>
-        <tr>
-            <td>Phone :</td>
-            <td>123454566, kudu number</td>
-        </tr>
-        <tr>
-            <td>City :</td>
-            <td>pake latitude</td>
-        </tr>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(element => { %>
+                <tr>
+                    <td><%= element.first_name %></td>
+                    <td><%= element.username%></td>
+                    <td><%= element.email%></td>
+                    <td><%= element.gender%></td>
+                    <td><%= element.phone_number%></td>
+                    <td><%= element.address%></td>
+                    <td><a href="/users/edit/<%= element.id%>">Edit</a></td>
+                </tr>
+            <% }); %> 
+        </tbody>
     </table>
 </body>
 </html>
