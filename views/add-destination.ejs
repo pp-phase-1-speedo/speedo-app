@@ -1,12 +1,14 @@
 <%- include('./partials/head', {title: 'Add Destination' }) %>
 
 <form action="/destinations/<%= shipment_id %>/add" method="POST">
-  <input type="radio" id="" name="radio" checked>
-
+  <input type="radio" id="" name="radio" checked value="existing">
   <label>Use existing destination</label><br>
-
-  <input type="radio" id="" name="radio">
-
+  
+  <select>
+    <option>-- select ---</option>
+  </select><br><br>
+  
+  <input type="radio" id="" name="radio" value="new">
   <label>Use new destination</label><br>
 
   <label for="name">Recipient Name</label><br>

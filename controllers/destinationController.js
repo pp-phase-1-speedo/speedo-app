@@ -1,14 +1,25 @@
 'use strict'
 const { User, Shipment, Destination, ShipmentDestination } = require('../models')
+const moneyFormatter = require('../helpers/moneyFormatter')
 
 class Controller {
   static list(req, res) {
-    // Destination.findAll({ where: { id: req.params.shipment_id }, include: { model: Shipment } })
     Shipment.findOne({ where: { id: req.params.shipment_id }, include: { model: Destination } })
-      .then(shipments => {
-        // console.log(shipments.Destinations)
-        // res.send(shipments.Destinations)
-        res.render('list-destination', { destinations: shipments.Destinations })
+      .then(shipment => {
+        let current_coordinate = { latitude: +shipment.current_latitude, longitude: +shipment.current_longitude }
+        // console.log((shipment.Destinations[0].distance))
+        shipment.Destinations.forEach(destination => {
+          let latitude = +destination.destination_latitude
+          let longitude = +destination.destination_longitude
+          let destination_coordinate = { latitude, longitude }
+          // console.log({ current_coordinate, destination_coordinate })
+          destination.distance = Destination.calculateDistance(current_coordinate, destination_coordinate)
+          // console.log(destination.distance, '<<<<<')
+          destination.price = destination.getPrice(destination.distance)
+        })
+        console.log(shipment.Destinations)
+        // res.send(shipment)
+        res.render('list-destination', { destinations: shipment.Destinations, moneyFormatter })
       })
       .catch(err => {
         res.send(err)

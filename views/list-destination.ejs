@@ -14,14 +14,15 @@
     <tbody>
       
       <% destinations.forEach(destination => { %>
-        <% let {id, recipient_name, destination_latitude, destination_longitude} = destination %>
+        <% let {id, recipient_name, destination_latitude, destination_longitude, price, distance} = destination %>
 
         <tr>
           <td><%= id %></td>
-          <td><%= recipient_name
-           %></td>
+          <td><%= recipient_name %></td>
           <td><%= destination_latitude %></td>
           <td><%= destination_longitude %></td>
+          <td><%= distance + ' km'%></td>
+          <td><%= moneyFormatter(price) %></td>
         </tr>
 
         <% }) %>
