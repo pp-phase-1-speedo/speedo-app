@@ -7,11 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>
-        <a href="/users">Show Profile</a>
-        <a href="/shipments/add">add Shipment</a>
-    </nav>
-
     <table border="1">
         <thead>
             <tr>
@@ -21,7 +16,7 @@
                 <th>Gender</th>
                 <th>Phone</th>
                 <th>Address</th>
-                <th>Action</th>
+                <th colspan="2">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -34,8 +29,9 @@
                     <td><%= element.phone_number%></td>
                     <td><%= element.address%></td>
                     <td><a href="/users/edit/<%= element.id%>">Edit</a></td>
+                    <td><a href="/shipments/<%= element.id %>/list">add Shipment</a></td>
                 </tr>
-            <% }); %> 
+            <% }); %>
         </tbody>
     </table>
 </body>

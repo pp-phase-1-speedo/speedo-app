@@ -19,7 +19,6 @@ app.use(
     },
   })
 );
-app.use(router);
 
 app.get("/", (req, res) => {
   if (req.session.isLoggedIn === true) {
@@ -28,10 +27,11 @@ app.get("/", (req, res) => {
         username: req.session.username,
       },
     }).then((data) => {
-      res.render("halamanUser", {
-        username: req.session.username,
-        data,
-      });
+      // res.render("halamanUser", {
+      //   username: req.session.username,
+      //   data,
+      res.redirect("/users");
+      // });
     });
   } else {
     res.redirect("/login");
@@ -69,6 +69,8 @@ app.post("/login", (req, res) => {
       res.send(err);
     });
 });
+
+app.use(router);
 
 app.listen(port, () => {
   console.log(`Running port : ${port}`);
