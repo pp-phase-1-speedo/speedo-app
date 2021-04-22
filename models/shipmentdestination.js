@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   ShipmentDestination.init({
     ShipmentId: DataTypes.INTEGER,
     DestinationId: DataTypes.INTEGER,
-    status: DataTypes.STRING
+    // status: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'ShipmentDestination',

@@ -5,7 +5,7 @@ const shipmentRouter = require("./shipmentRoutes");
 const destinationRouter = require("./destinationRoutes");
 
 router.use("/users", userRouter);
-router.use("/shipment", shipmentRouter);
-router.use("/destination", destinationRouter);
+router.use("/shipments", shipmentRouter);
+router.use("/destinations", destinationRouter);
 
 module.exports = router;

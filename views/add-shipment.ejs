@@ -1,6 +1,6 @@
 <%- include('./partials/head', {title: 'Add Shipment' }) %>
 
-<form action="/shipment/2/add" method="POST">
+<form action="/shipments/<%= user_id %>/add" method="POST">
 
   <label for="location">Select Current Location</label><br>
   <select id="location" name="location">

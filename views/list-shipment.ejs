@@ -1,12 +1,12 @@
 <%- include('./partials/head', {title: 'List Shipment' }) %>
   
-  <a href="/shipment/2/add">Add new shipment</a>
+  <a href="/shipments/<%= user_id %>/add">Add new shipment</a>
 
   <table border="1">
     <thead>
       <tr>
         <th>Shipment ID</th>
-        <th>Shipment Date</th>
+        <th>Shipment Created Date</th>
         <th>current_latitude</th>
         <th>current_longitude</th>
         <th>Action</th>
@@ -23,7 +23,9 @@
           <td><%= current_latitude %></td>
           <td><%= current_longitude %></td>
           <td>
-            <a href="/destination/2/add"><button>add destination</button></a>
+            <a href="/destinations/<%= id %>/list"><button>view destinations</button></a>
+            |
+            <a href="/destinations/<%= id %>/add"><button>add destination</button></a>
           </td>
         </tr>
 

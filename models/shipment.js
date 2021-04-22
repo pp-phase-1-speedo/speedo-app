@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
   Shipment.init({
     current_latitude: DataTypes.STRING,
     current_longitude: DataTypes.STRING,
-    
   }, {
     sequelize,
     modelName: 'Shipment',

@@ -4,12 +4,9 @@ const { User, Shipment, Destination, ShipmentDestination } = require('../models'
 class Controller {
 
   static list(req, res) {
-    console.log(req.params.user_id)
     Shipment.findAll({ where: { UserId: req.params.user_id }, order: [['createdAt', 'DESC']] })
-      // Shipment.findAll({  })
       .then(shipments => {
-        // res.send(shipments)
-        res.render('./list-shipment', { shipments })
+        res.render('./list-shipment', { shipments, user_id: req.params.user_id })
       })
       .catch(err => {
         res.send(err)
@@ -17,7 +14,7 @@ class Controller {
   }
 
   static getAdd(req, res) {
-    res.render('add-shipment')
+    res.render('./add-shipment', { user_id: req.params.user_id })
   }
 
   static postAdd(req, res) {
@@ -25,10 +22,9 @@ class Controller {
     let current_latitude = location[0]
     let current_longitude = location[1]
     let UserId = req.params.user_id
-    // console.log({ current_latitude, current_longitude })
     Shipment.create({ current_latitude, current_longitude, UserId })
       .then(() => {
-        res.redirect('/shipment/2/list')
+        res.redirect(`/shipments/${UserId}/list`)
       })
       .catch(err => {
         res.send(err)
