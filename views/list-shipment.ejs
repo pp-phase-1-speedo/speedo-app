@@ -1,0 +1,36 @@
+<%- include('./partials/head', {title: 'List Shipment' }) %>
+  
+  <a href="/shipment/2/add">Add new shipment</a>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Shipment ID</th>
+        <th>Shipment Date</th>
+        <th>current_latitude</th>
+        <th>current_longitude</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <% shipments.forEach(shipment => { %>
+        <% let {id, createdAt, current_latitude, current_longitude} = shipment %>
+
+        <tr>
+          <td><%= id %></td>
+          <td><%= createdAt %></td>
+          <td><%= current_latitude %></td>
+          <td><%= current_longitude %></td>
+          <td>
+            <a href="/destination/2/add"><button>add destination</button></a>
+          </td>
+        </tr>
+
+        <% }) %>
+      
+    </tbody>
+  </table>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<%- include('./partials/head', {title: 'Add Destination' }) %>
+
+<form action="/shipment/2/add" method="POST">
+
+  <label for="name">Recipient Name</label><br>
+  <input type="text" id="name" name="name"><br>
+
+  <label for="coordinate">Coordinate</label><br>
+  <input type="text" id="coordinate" name="coordinate"><br>
+
+  <br>
+  <input type="submit" value="add destination">
+
+</form>
+
+
+</body>
+
+</html>
