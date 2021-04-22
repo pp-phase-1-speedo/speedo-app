@@ -21,8 +21,11 @@
                     <td><%= element.gender%></td>
                     <td><%= element.phone_number%></td>
                     <td><%= element.address%></td>
-                    <td><a href="/users/edit/<%= element.id%>">Edit</a></td>
-                    <td><a href="/shipments/<%= element.id %>/list">add Shipment</a></td>
+                    <td>
+                        <a href="/shipments/<%= element.id %>/list"><button class="btn btn-primary">Shipments</button></a>
+                        <a href="/users/edit/<%= element.id%>"><button class="btn btn-warning">Edit</button></a>
+                        <a href=""><button class="btn btn-danger">Delete</button></a>
+                    </td>
                 </tr>
             <% }); %>
         </tbody>
