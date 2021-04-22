@@ -39,7 +39,7 @@ class Controller {
     };
     User.create(dataRegister)
       .then((data) => {
-        res.redirect('/login')
+        res.redirect("/login");
       })
       .catch((err) => {
         res.send(err);
@@ -80,9 +80,7 @@ class Controller {
       });
   }
 
-  static delete(req,res) {
-    
-  }
+  static delete(req, res) {}
 }
 
 module.exports = Controller;

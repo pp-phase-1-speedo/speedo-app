@@ -36,8 +36,18 @@ class Controller {
   static postAdd(req, res) {
     let ShipmentId = req.params.shipment_id
     if (req.body.radio === 'existing') {
-      Destination.findOne({ where: { id: req.body.destination_id } })
-        .then(result => res.send(result))
+      ShipmentDestination.create({ ShipmentId, DestinationId: req.body.destination_id })
+      .then(() => {
+        res.redirect(`/destinations/${ShipmentId}/list`)
+      })
+      .catch(err => {
+        res.send(err)
+      })
+      // Destination.findOne({ where: { id: req.body.destination_id } })
+      //   .then(result => {
+          
+      //   }
+        // res.send(result))
         // .then()
     } else if (req.body.radio === 'new') {
       let coordinate = req.body.coordinate.split(', ')
