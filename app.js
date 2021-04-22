@@ -66,6 +66,7 @@ app.post("/login", (req, res) => {
       } else {
         req.session.isLoggedIn = true;
         req.session.username = data.username;
+        res.redirect("/");
       }
     })
     .catch((err) => {
