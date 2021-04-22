@@ -26,7 +26,7 @@ class Controller {
     Destination.findAll({ order: [['recipient_name', 'ASC']] })
       .then(destinations => {
         // res.send(destinations)
-        res.render('./add-destination', { shipment_id: req.params.shipment_id })
+        res.render('./add-destination', { shipment_id: req.params.shipment_id, destinations })
       })
       .catch(err => {
         res.send(err)
@@ -35,21 +35,37 @@ class Controller {
 
   static postAdd(req, res) {
     let ShipmentId = req.params.shipment_id
-    let recipient_name = req.body.name
-    let coordinate = req.body.coordinate.split(', ')
-    let destination_latitude = coordinate[0]
-    let destination_longitude = coordinate[1]
-    Destination.create({ recipient_name, destination_latitude, destination_longitude })
-      .then((result) => {
-        let DestinationId = result.id
-        return ShipmentDestination.create({ ShipmentId, DestinationId })
-      })
+    if (req.body.radio === 'existing') {
+      ShipmentDestination.create({ ShipmentId, DestinationId: req.body.destination_id })
       .then(() => {
         res.redirect(`/destinations/${ShipmentId}/list`)
       })
       .catch(err => {
         res.send(err)
       })
+      // Destination.findOne({ where: { id: req.body.destination_id } })
+      //   .then(result => {
+          
+      //   }
+        // res.send(result))
+        // .then()
+    } else if (req.body.radio === 'new') {
+      let coordinate = req.body.coordinate.split(', ')
+      let recipient_name = req.body.name
+      let destination_latitude = coordinate[0]
+      let destination_longitude = coordinate[1]
+      Destination.create({ recipient_name, destination_latitude, destination_longitude })
+        .then((result) => {
+          let DestinationId = result.id
+          return ShipmentDestination.create({ ShipmentId, DestinationId })
+        })
+        .then(() => {
+          res.redirect(`/destinations/${ShipmentId}/list`)
+        })
+        .catch(err => {
+          res.send(err)
+        })
+    }
   }
 }
 

@@ -1,14 +1,13 @@
 <%- include('./partials/head', {title: 'List Shipment' }) %>
   
-  <a href="/shipments/<%= user_id %>/add">Add new shipment</a>
-
+  <a href="/shipments/<%= user_id %>/add"><button class="btn btn-outline-info" type="button">Add Shipment</button></a>
+  <br> <br>
   <table class="table">
     <thead class="table-dark">
       <tr>
         <th>Shipment ID</th>
         <th>Shipment Date</th>
-        <th>current_latitude</th>
-        <th>current_longitude</th>
+        <th>Branch Office</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -20,8 +19,7 @@
         <tr>
           <td><%= id %></td>
           <td><%= createdAt.toDateString() %></td>
-          <td><%= current_latitude %></td>
-          <td><%= current_longitude %></td>
+          <td><%= shipment.getBranchOffice() %></td>
           <td>
             <a href="/destinations/<%= id %>/list"><button class="btn btn-outline-primary">view destinations</button></a>
             <a href="/destinations/<%= id %>/add"><button class="btn btn-outline-secondary">add destination</button></a>
@@ -32,6 +30,7 @@
       
     </tbody>
   </table>
+
 
 
   <%- include('./partials/foot') %>

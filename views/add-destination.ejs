@@ -4,8 +4,15 @@
   <input type="radio" id="" name="radio" checked value="existing">
   <label>Use existing destination</label><br>
   
-  <select>
-    <option>-- select ---</option>
+  <select name="destination_id">
+    <option>-- select destination ---</option>
+
+    <% destinations.forEach(destination => { %>
+        <% let {id, recipient_name} = destination %>
+        <option value="<%= id %>"><%= recipient_name %></option>
+
+    <% }) %>
+
   </select><br><br>
   
   <input type="radio" id="" name="radio" value="new">
@@ -18,8 +25,10 @@
   <input type="text" id="coordinate" name="coordinate" placeholder="[latitude], [longitude]"><br>
 
   <br>
-  <input type="submit" value="add destination">
+  <input type="submit" value="Add destination">
 
 </form>
+
+<!-- <button type="button" class="btn btn-outline-dark">Back</button> -->
 
 <%- include('./partials/foot') %>
