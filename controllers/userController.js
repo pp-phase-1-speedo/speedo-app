@@ -8,7 +8,11 @@ const {
 
 class Controller {
   static profilUser(req, res) {
-    User.findAll()
+    User.findAll({
+      where: {
+        username: req.query.username,
+      },
+    })
       .then((data) => {
         res.render("halamanUser", { data });
       })
