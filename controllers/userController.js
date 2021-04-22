@@ -38,7 +38,8 @@ class Controller {
     };
     User.create(dataRegister)
       .then((data) => {
-        res.send("berhasil");
+        // res.send("berhasil");
+        res.redirect('/login')
       })
       .catch((err) => {
         res.send(err);
@@ -55,6 +56,10 @@ class Controller {
   }
   static editHandler(req, res) {
     console.log(req.body);
+  }
+
+  static delete(req,res) {
+    
   }
 }
 

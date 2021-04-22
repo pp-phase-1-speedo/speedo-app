@@ -6,7 +6,7 @@
     <thead class="table-dark">
       <tr>
         <th>Shipment ID</th>
-        <th>Shipment Created Date</th>
+        <th>Shipment Date</th>
         <th>current_latitude</th>
         <th>current_longitude</th>
         <th>Action</th>
@@ -19,13 +19,12 @@
 
         <tr>
           <td><%= id %></td>
-          <td><%= createdAt %></td>
+          <td><%= createdAt.toDateString() %></td>
           <td><%= current_latitude %></td>
           <td><%= current_longitude %></td>
           <td>
-            <a href="/destinations/<%= id %>/list"><button>view destinations</button></a>
-            |
-            <a href="/destinations/<%= id %>/add"><button>add destination</button></a>
+            <a href="/destinations/<%= id %>/list"><button class="btn btn-outline-primary">view destinations</button></a>
+            <a href="/destinations/<%= id %>/add"><button class="btn btn-outline-secondary">add destination</button></a>
           </td>
         </tr>
 
