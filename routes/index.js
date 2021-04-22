@@ -1,6 +1,18 @@
 const router = require('express').Router();
 const Controller = require('../controllers/index');
 
+const UserController = require('../controllers/userController')
+const ShipmentController = require('../controllers/shipmentController')
+const DestinationController = require('../controllers/destinationController')
+
+const userRouter = require('./userRoutes')
+const shipmentRouter = require('./shipmentRoutes')
+const destinationRouter = require('./destinationRoutes')
+
+router.use('/users', userRouter)
+router.use('/shipment', shipmentRouter)
+router.use('/destination', destinationRouter)
+
 router.get('/', Controller.profilUser)
 router.get('/add', Controller.add)
 router.post('/add', Controller.addHandler)
