@@ -8,13 +8,14 @@ const {
 
 class Controller {
   static profilUser(req, res) {
-    User.findAll()
-      .then((data) => {
-        res.render("halamanUser", { data });
-      })
-      .catch((err) => {
-        res.send(err);
-      });
+    // User.findAll()
+    //   .then((data) => {
+    //     res.render("halamanUser", { data });
+    //   })
+    //   .catch((err) => {
+    //     res.send(err);
+    //   });
+    res.redirect("/");
   }
   static register(req, res) {
     res.render("add-user");

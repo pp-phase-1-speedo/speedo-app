@@ -4,32 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
     <title>Document</title>
 </head>
 <body>
-    <table border="1">
+    <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th colspan="2">Action</th>
+            <tr class="table-secondary">
+                <th class="table-primary">Name</th>
+                <th class="table-primary">Username</th>
+                <th class="table-primary">Email</th>
+                <th class="table-primary">Gender</th>
+                <th class="table-primary">Phone</th>
+                <th class="table-primary">Address</th>
+                <th class="table-primary" colspan="2">Action</th>
             </tr>
         </thead>
         <tbody>
             <% data.forEach(element => { %>
                 <tr>
-                    <td><%= element.first_name %></td>
-                    <td><%= element.username%></td>
-                    <td><%= element.email%></td>
-                    <td><%= element.gender%></td>
-                    <td><%= element.phone_number%></td>
-                    <td><%= element.address%></td>
-                    <td><a href="/users/edit/<%= element.id%>">Edit</a></td>
-                    <td><a href="/shipments/<%= element.id %>/list">add Shipment</a></td>
+                    <td class="table-success"><%= element.first_name %></td>
+                    <td class="table-success"><%= element.username%></td>
+                    <td class="table-success"><%= element.email%></td>
+                    <td class="table-success"><%= element.gender%></td>
+                    <td class="table-success"><%= element.phone_number%></td>
+                    <td class="table-success"><%= element.address%></td>
+                    <td class="table-success"><a href="/users/edit/<%= element.id%>">Edit</a></td>
+                    <td class="table-success"><a href="/shipments/<%= element.id %>/list">add Shipment</a></td>
                 </tr>
             <% }); %>
         </tbody>
