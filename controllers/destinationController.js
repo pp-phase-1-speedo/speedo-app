@@ -14,7 +14,6 @@ class Controller {
           destination.distance = Destination.calculateDistance(current_coordinate, destination_coordinate)
           destination.price = destination.getPrice(destination.distance)
         })
-        // res.send(shipment)
         res.render('list-destination', { destinations: shipment.Destinations, moneyFormatter })
       })
       .catch(err => {
@@ -25,7 +24,6 @@ class Controller {
   static getAdd(req, res) {
     Destination.findAll({ order: [['recipient_name', 'ASC']] })
       .then(destinations => {
-        // res.send(destinations)
         res.render('./add-destination', { shipment_id: req.params.shipment_id, destinations })
       })
       .catch(err => {
@@ -43,12 +41,6 @@ class Controller {
       .catch(err => {
         res.send(err)
       })
-      // Destination.findOne({ where: { id: req.body.destination_id } })
-      //   .then(result => {
-          
-      //   }
-        // res.send(result))
-        // .then()
     } else if (req.body.radio === 'new') {
       let coordinate = req.body.coordinate.split(', ')
       let recipient_name = req.body.name
