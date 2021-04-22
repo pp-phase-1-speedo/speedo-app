@@ -1,5 +1,6 @@
 "use strict";
 const geolib = require('geolib')
+const convertMeterToKm = require('../helpers/convertMeterToKm')
 
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -15,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       if (price < 10000) {
         price = 10000
       }
-      return price
+      return Math.round(price / 1000) * 1000
     }
 
     static calculateDistance(current, destination) {
@@ -23,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
       //   { latitude: 51.5103, longitude: 7.49347 },
       //   { latitude: "51° 31' N", longitude: "7° 28' E" }
       // );
-      let distance = geolib.getDistance(current, destination) / 1000
-      return distance
+      let distance = geolib.getDistance(current, destination)
+      return convertMeterToKm(distance)
     }
 
     static associate(models) {
