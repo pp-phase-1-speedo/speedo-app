@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
-            args: true,
             msg: "username tidak boleh kosong",
           },
         },
@@ -27,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
-            args: true,
             msg: "password tidak boleh kosong",
           },
         },
@@ -36,7 +34,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
-            args: true,
             msg: "First Name tidak boleh kosong",
           },
         },
@@ -46,7 +43,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
-            args: true,
             msg: "Email tidak boleh kosong",
           },
         },
@@ -55,7 +51,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
-            args: true,
             msg: "Gender tidak boleh kosong",
           },
         },
@@ -64,7 +59,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
-            args: true,
             msg: "Nomor Telfon tidak boleh kosong",
           },
         },
@@ -73,7 +67,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
-            args: true,
             msg: "Alamat tidak boleh kosong",
           },
         },
