@@ -8,6 +8,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 const router = require("./routes/index");
+app.use(router);
 
 app.use(
   session({
@@ -27,11 +28,15 @@ app.get("/", (req, res) => {
         username: req.session.username,
       },
     }).then((data) => {
-      // res.render("halamanUser", {
-      //   username: req.session.username,
-      //   data,
-      res.redirect("/users");
-      // });
+      res
+        .render("halamanUser", {
+          username: req.session.username,
+          data,
+          // res.redirect("/users");
+        })
+        .catch((err) => {
+          res.send(err);
+        });
     });
   } else {
     res.redirect("/login");
@@ -78,7 +83,6 @@ app.post("/login", (req, res) => {
 //     },
 //   })
 // );
-app.use(router);
 
 //   if (req.session.isLoggedIn === true) {
 //     User.findAll({
@@ -128,7 +132,7 @@ app.use(router);
 //     });
 // });
 
-app.use(router);
+// app.use(router);
 
 app.listen(port, () => {
   console.log(`Running port : ${port}`);
