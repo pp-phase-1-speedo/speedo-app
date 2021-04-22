@@ -15,14 +15,17 @@
         <tbody>
             <% data.forEach(element => { %>
                 <tr>
-                    <td class="table-success"><%= element.first_name %></td>
-                    <td class="table-success"><%= element.username%></td>
-                    <td class="table-success"><%= element.email%></td>
-                    <td class="table-success"><%= element.gender%></td>
-                    <td class="table-success"><%= element.phone_number%></td>
-                    <td class="table-success"><%= element.address%></td>
-                    <td class="table-success"><a href="/users/edit/<%= element.id%>">Edit</a></td>
-                    <td class="table-success"><a href="/shipments/<%= element.id %>/list">add Shipment</a></td>
+                    <td><%= element.first_name %></td>
+                    <td><%= element.username%></td>
+                    <td><%= element.email%></td>
+                    <td><%= element.gender%></td>
+                    <td><%= element.phone_number%></td>
+                    <td><%= element.address%></td>
+                    <td>
+                        <a href="/shipments/<%= element.id %>/list"><button class="btn btn-primary">Shipments</button></a>
+                        <a href="/users/edit/<%= element.id%>"><button class="btn btn-warning">Edit</button></a>
+                        <a href=""><button class="btn btn-danger">Delete</button></a>
+                    </td>
                 </tr>
             <% }); %>
         </tbody>
