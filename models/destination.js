@@ -13,18 +13,17 @@ module.exports = (sequelize, DataTypes) => {
         through: models.ShipmentDestination,
       });
     }
-  }
-  Destination.init(
-    {
-      recipient_name: DataTypes.STRING,
-      destination_latitude: DataTypes.STRING,
-      destination_longitude: DataTypes.STRING,
-      city_name: DataTypes.STRING,
-    },
-    {
-      sequelize,
-      modelName: "Destination",
-    }
-  );
+  };
+  Destination.init({
+    recipient_name: DataTypes.STRING,
+    destination_latitude: DataTypes.STRING,
+    destination_longitude: DataTypes.STRING,
+    distance: DataTypes.INTEGER,
+    price: DataTypes.INTEGER
+    // city_name: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'Destination',
+  });
   return Destination;
 };

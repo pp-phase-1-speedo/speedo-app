@@ -14,9 +14,6 @@ module.exports = {
       DestinationId: {
         type: Sequelize.INTEGER,
       },
-      status: {
-        type: Sequelize.STRING,
-      },
       ShipmentId: {
         type: Sequelize.INTEGER,
         references: {

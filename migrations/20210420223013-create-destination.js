@@ -17,8 +17,11 @@ module.exports = {
       destination_longitude: {
         type: Sequelize.STRING,
       },
-      city_name: {
-        type: Sequelize.STRING,
+      distance: {
+        type: Sequelize.INTEGER,
+      },
+      price: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

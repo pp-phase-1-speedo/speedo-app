@@ -1,0 +1,32 @@
+<%- include('./partials/head', {title: 'List Destination' }) %>
+  
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Destination ID</th>
+        <th>Recipient Name</th>
+        <th>destination_latitude</th>
+        <th>destination_longitude</th>
+        <th>Distance</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <% destinations.forEach(destination => { %>
+        <% let {id, recipient_name, destination_latitude, destination_longitude} = destination %>
+
+        <tr>
+          <td><%= id %></td>
+          <td><%= recipient_name %></td>
+          <td><%= destination_latitude %></td>
+          <td><%= destination_longitude %></td>
+        </tr>
+
+        <% }) %>
+      
+    </tbody>
+  </table>
+
+</body>
+</html>
