@@ -35,12 +35,15 @@ class Controller {
     let ShipmentId = req.params.shipment_id
     if (req.body.radio === 'existing') {
       ShipmentDestination.create({ ShipmentId, DestinationId: req.body.destination_id })
-      .then(() => {
-        res.redirect(`/destinations/${ShipmentId}/list`)
-      })
-      .catch(err => {
-        res.send(err)
-      })
+        .then(() => {
+          return Shipment.findOne({ where: { id: ShipmentId } })
+        })
+        .then(result => {
+          res.redirect(`/shipments/${result.UserId}/list`)
+        })
+        .catch(err => {
+          res.send(err)
+        })
     } else if (req.body.radio === 'new') {
       let coordinate = req.body.coordinate.split(', ')
       let recipient_name = req.body.name
@@ -52,7 +55,10 @@ class Controller {
           return ShipmentDestination.create({ ShipmentId, DestinationId })
         })
         .then(() => {
-          res.redirect(`/destinations/${ShipmentId}/list`)
+          return Shipment.findOne({ where: { id: ShipmentId } })
+        })
+        .then(result => {
+          res.redirect(`/shipments/${result.UserId}/list`)
         })
         .catch(err => {
           res.send(err)
