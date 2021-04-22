@@ -4,8 +4,15 @@
   <input type="radio" id="" name="radio" checked value="existing">
   <label>Use existing destination</label><br>
   
-  <select>
-    <option>-- select ---</option>
+  <select name="destination_id">
+    <option>-- select destination ---</option>
+
+    <% destinations.forEach(destination => { %>
+        <% let {id, recipient_name} = destination %>
+        <option value="<%= id %>"><%= recipient_name %></option>
+
+    <% }) %>
+
   </select><br><br>
   
   <input type="radio" id="" name="radio" value="new">
