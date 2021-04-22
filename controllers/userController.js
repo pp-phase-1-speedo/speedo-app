@@ -1,4 +1,5 @@
 "use strict";
+const e = require("express");
 const {
   User,
   Shipment,
@@ -38,7 +39,7 @@ class Controller {
     };
     User.create(dataRegister)
       .then((data) => {
-        res.send("berhasil");
+        res.redirect("/login");
       })
       .catch((err) => {
         res.send(err);
@@ -54,7 +55,29 @@ class Controller {
       });
   }
   static editHandler(req, res) {
-    console.log(req.body);
+    User.findByPk(+req.params.id)
+      .then((data) => {
+        data.username = req.body.username;
+        data.password = req.body.password;
+        data.first_name = req.body.first_name;
+        data.last_name = req.body.last_name;
+        data.email = req.body.email;
+        data.gender = req.body.gender;
+        data.phone_number = req.body.phone_number;
+        data.address = req.body.address;
+        return data.save();
+      })
+      .then((datas) => {
+        res.redirect(`/users?username=${req.body.username}`);
+      })
+      .catch((err) => {
+        let text = [];
+        err.errors.forEach((e) => {
+          text.push(e.message);
+        });
+        console.log(text);
+        res.send(text);
+      });
   }
 }
 

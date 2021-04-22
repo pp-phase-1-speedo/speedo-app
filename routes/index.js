@@ -1,10 +1,12 @@
 const router = require("express").Router();
-
+const UserController = require("../controllers/userController");
 const userRouter = require("./userRoutes");
 const shipmentRouter = require("./shipmentRoutes");
 const destinationRouter = require("./destinationRoutes");
 const { User } = require("../models/index");
 
+router.get("/users/add", UserController.register);
+router.post("/users/add", UserController.registerHandler);
 router.get("/", (req, res) => {
   res.redirect("/users");
 });
